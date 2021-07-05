@@ -6,7 +6,7 @@
 /*   By: josantos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 15:57:51 by josantos          #+#    #+#             */
-/*   Updated: 2021/06/29 19:12:45 by josantos         ###   ########.fr       */
+/*   Updated: 2021/07/05 17:03:58 by josantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include <stdio.h>
+# include <fcntl.h>
 
 int		ft_error(char *message);
 char	*get_path(char **envp);

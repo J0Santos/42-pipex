@@ -6,44 +6,32 @@
 /*   By: josantos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 16:00:12 by josantos          #+#    #+#             */
-/*   Updated: 2021/06/29 20:13:28 by josantos         ###   ########.fr       */
+/*   Updated: 2021/07/05 17:50:26 by josantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 #include <stdio.h>
 
-void	call_child(char **argv, char **envp, int fd)
+int	main(char **argv, int argc, char **envp)
 {
+	int		fd[2];
+	pid_t	pid;
 	int i;
-	char **path;
-
-	i = 0;
-	path = get_path(envp);
-	execve(
-}
-
-int	main(int argc, char **argv, char **envp)
-{
-	int fd[argc - 3][2];
-	int i;
-	int pid;
 
 	i = 2;
-	while (++i < argc)
+	while (*argv[i++] && i < argc - 2)
 	{
 		if (pipe(fd) == -1)
-			ft_error("Error with creating pipe");
-		if (open(argv[1], O_RDONLY) == -1)
-			ft_error("Error opening file");
-		
-
+			ft_error("Error creating pipe");
 		pid = fork();
 		if (pid < 0)
 			ft_error("Error with fork");
 		if (pid == 0)
-			call_child(argv, envp, fd);
+			call_child(fd, argv, envp);
 		else
-			call_parent
+			call_parent(fd, argv, envp);
+		wait(NULL);
 	}
 }
+

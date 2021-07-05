@@ -6,12 +6,11 @@
 #    By: josantos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/29 14:02:55 by josantos          #+#    #+#              #
-#    Updated: 2021/06/29 18:23:28 by josantos         ###   ########.fr        #
+#    Updated: 2021/07/02 15:03:22 by josantos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = pipex
-SRCS = pipex.c \
-	   ft_error.c
+SRCS = srcs/pipex_utils.c
 OBJS = $(SRCS:.c=.o)
 CC = gcc
 FLAGS = -Wall -Wextra -Werror -g
