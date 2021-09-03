@@ -6,16 +6,23 @@
 /*   By: josantos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:06:33 by josantos          #+#    #+#             */
-/*   Updated: 2021/07/05 18:08:08 by josantos         ###   ########.fr       */
+/*   Updated: 2021/09/03 16:10:41 by josantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
 
-void	ft_redirect(char **argv, int argc)
+char	**get_path(char **envp)
 {
-	int open_fd;
+	char	**cmd_path;
+	int i;
 
-	open_fd = open(argv[argc - 1], O_CREAT | O_TRUNC);
-	dup2(open_fd, STDOUT_FILENO);
-	close(open_fd);
+	cmd_path = NULL;
+	i = -1;
+	while (envp[++i])
+		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
+		{
+			cmd_path = ft_split(envp[i], ':');
+			break ;
+		}
+	return (cmd_path);
 }

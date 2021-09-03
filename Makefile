@@ -6,11 +6,12 @@
 #    By: josantos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/29 14:02:55 by josantos          #+#    #+#              #
-#    Updated: 2021/07/02 15:03:22 by josantos         ###   ########.fr        #
+#    Updated: 2021/09/03 14:21:58 by josantos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = pipex
-SRCS = srcs/pipex_utils.c
+SRCS = srcs/pipex_utils.c \
+	   srcs/pipex.c
 OBJS = $(SRCS:.c=.o)
 CC = gcc
 FLAGS = -Wall -Wextra -Werror -g
@@ -23,7 +24,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(MAKE) -C ./libft
-	$(CC) $(FLAGS) $(INCS) $(OBJS) -o $(NAME)
+	$(CC) $(FLAGS) $(INCS) ./libft/libft.a $(OBJS) -o $(NAME)
 
 clean:
 	rm -f $(OBJS)
