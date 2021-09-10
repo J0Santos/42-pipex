@@ -6,10 +6,18 @@
 /*   By: josantos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:06:33 by josantos          #+#    #+#             */
-/*   Updated: 2021/09/08 16:03:53 by josantos         ###   ########.fr       */
+/*   Updated: 2021/09/10 13:57:41 by josantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
+
+void	init_val(t_pipex *p, char **argv, char **envp)
+{
+	p->envp = envp;
+	p->argv = argv;
+	p->cmd_paths = get_path(envp);
+	p->cmd = NULL;
+}
 
 char	**get_path(char **envp)
 {

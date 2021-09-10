@@ -6,52 +6,59 @@
 /*   By: josantos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 12:45:18 by josantos          #+#    #+#             */
-/*   Updated: 2021/09/08 16:03:48 by josantos         ###   ########.fr       */
+/*   Updated: 2021/09/10 13:57:39 by josantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	pipex(int f1, int f2, char **cmd_path, char **argv)
+void	pipex(t_pipex *p)
 {
 	int		fd[2];
 	pid_t	pid;
-	int pipe_checker;
 
-	pipe_checker = pipe(fd);
-	if (pipe_checker < 1)
+	if (pipe(fd) < 0)
 		ft_error("Error creating pipe");
 	pid = fork();
 	if (pid < 0)
 		return (perror("Fork: "));
 	if (!pid)
-		child_process(fd,  cmd_path, argv);
+		child_process(fd, &p);
 	waitpid(pid, NULL, 0);
-	parent_process(fd, cmd_path, argv);
+	parent_process(fd, &p);
+}
+
+void	child_process(int *fd, t_pipex *p)
+{
+	int in;
+
+	close(fd[0]);
+	dup2(fd[1], STDOUT_FILENO);
+	close(fd[1]);
+	in = open(p->argv[1], O_RDONLY);
+	if (in < 0)
+		ft_error("Error opening infile");
+	dup2(in, 0);
+	p->cmd = ft_split(p->argv[2], ' ');
+	execve(p->cmd_paths, p->cmd, p->envp);
+}
+
+void	parent_process(int *fd, t_pipex *p)
+{
+	int out;
+
+	dup2(
+	out = open(argv[4], O_RDWR | O_CREAT | O_TRUNC);
+	if (out < 0)
+		ft_error("Error opening outfile");
 }
 
 int	main(int argc, char **argv, char **envp)
 {
-	int f1;
-	int f2;
-	char **cmd_path;
-	int i = -1;
+	t_pipex p;
 	
 	if (argc < 5)
-		ft_error("Too few arguments, must be <./pipex file1 cmd1 cmd2 file2>")
-	f1 = open(argv[1], O_RDONLY);
-	f2 = open(argv[4], O_RDWR | O_CREAT | O_TRUNC);
-	cmd_path = get_path(envp);
-	pipex(f1, f2, cmd_path, argv);
-}
-
-void	child_process(int *fd, char **path, char **argv)
-{
-	char **cmd;
-
-	cmd = ft_split(argv[2], ' ');
-	close(fd[0]);
-	dup2(fd[1], STDOUT_FILENO);
-	close(fd[1]);
-	execve(path, cmd, envp
+		ft_error("Usage must be: ./pipex file1 cmd1 cmd2 file2");
+	init_val(&p, argv, envp);
+	pipex(&p);
 }
