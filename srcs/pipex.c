@@ -6,7 +6,7 @@
 /*   By: josantos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 12:45:18 by josantos          #+#    #+#             */
-/*   Updated: 2021/09/10 13:57:39 by josantos         ###   ########.fr       */
+/*   Updated: 2021/09/10 17:36:07 by josantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	pipex(t_pipex *p)
 	if (pid < 0)
 		return (perror("Fork: "));
 	if (!pid)
-		child_process(fd, &p);
+		child_process(fd, p);
 	waitpid(pid, NULL, 0);
-	parent_process(fd, &p);
+	parent_process(fd, p);
 }
 
 void	child_process(int *fd, t_pipex *p)
@@ -40,9 +40,10 @@ void	child_process(int *fd, t_pipex *p)
 		ft_error("Error opening infile");
 	dup2(in, 0);
 	p->cmd = ft_split(p->argv[2], ' ');
-	execve(p->cmd_paths, p->cmd, p->envp);
+	p->correct_path = update_path(p);
+	execve(p->correct_path, p->cmd, p->envp);
 }
-
+/*
 void	parent_process(int *fd, t_pipex *p)
 {
 	int out;
@@ -52,7 +53,7 @@ void	parent_process(int *fd, t_pipex *p)
 	if (out < 0)
 		ft_error("Error opening outfile");
 }
-
+*/
 int	main(int argc, char **argv, char **envp)
 {
 	t_pipex p;

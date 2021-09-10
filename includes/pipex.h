@@ -6,7 +6,7 @@
 /*   By: josantos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 15:57:51 by josantos          #+#    #+#             */
-/*   Updated: 2021/09/10 13:58:23 by josantos         ###   ########.fr       */
+/*   Updated: 2021/09/10 17:36:12 by josantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,18 @@ typedef struct s_pipex
 	char **argv;
 	char **cmd_paths;
 	char **cmd;
+	char *correct_path;
 }	t_pipex;
 
 
+void	init_val(t_pipex *p, char	**argv, char **envp);
 int		ft_error(char *message);
 char	**get_path(char **envp);
 char	*trim(char **line, char *cut);
+char	*update_path(t_pipex *p);
+void	*check_access(char *path);
 
-void	child_process(int *fd, char **path, char **argv);
-void	parent_process(int *fd, char **path, char
+void	child_process(int *fd, t_pipex *p);
+void	parent_process(int *fd, t_pipex *p);
 
 #endif
