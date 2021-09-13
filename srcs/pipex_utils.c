@@ -6,7 +6,7 @@
 /*   By: josantos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:06:33 by josantos          #+#    #+#             */
-/*   Updated: 2021/09/10 17:36:09 by josantos         ###   ########.fr       */
+/*   Updated: 2021/09/13 16:28:35 by josantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
@@ -46,22 +46,22 @@ char	**get_path(char **envp)
 char	*update_path(t_pipex *p)
 {
 	int i;
+	bool cmd_error;
 
 	i = -1;
 	while (p->cmd_paths[++i])
 	{
+		cmd_error = false;
 		p->cmd_paths[i] = ft_strjoin(p->cmd_paths[i], p->cmd[0]);
-		check_access(p->cmd_paths[i]);
-		if (access(p->cmd_paths[i], X_OK) == -1)
-		{
-			free(p->cmd_paths[i]);
-			ft_error("Command not found");
-		}
+		if (check_access(p->cmd_paths[i]) == 0)
+			cmd_error = true;
 		else
 			p->correct_path = p->cmd_paths[i];
 	}
-		i = -1;
-		while (p->cmd_paths[++i])
-			free(p->cmd_paths[i]);
-		return (p->correct_path);
+	if (cmd_error == true)
+		ft_error("Command not found");
+	i = -1;
+	while (p->cmd_paths[++i])
+		free(p->cmd_paths[i]);
+	return (p->correct_path);
 }

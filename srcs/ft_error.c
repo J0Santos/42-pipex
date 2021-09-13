@@ -6,7 +6,7 @@
 /*   By: josantos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 18:18:45 by josantos          #+#    #+#             */
-/*   Updated: 2021/06/29 18:34:00 by josantos         ###   ########.fr       */
+/*   Updated: 2021/09/13 15:33:48 by josantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int	ft_error(char *message)
 {
-	perror(message);
+	ft_putstr_fd(message, 2);
 	exit(EXIT_FAILURE);
 }
