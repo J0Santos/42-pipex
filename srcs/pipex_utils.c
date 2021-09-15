@@ -6,7 +6,7 @@
 /*   By: josantos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:06:33 by josantos          #+#    #+#             */
-/*   Updated: 2021/09/13 16:28:35 by josantos         ###   ########.fr       */
+/*   Updated: 2021/09/15 16:17:25 by josantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
@@ -42,7 +42,7 @@ char	**get_path(char **envp)
 		cmd_path[i] = ft_strjoin(cmd_path[i], "/");
 	return (cmd_path);
 }
-
+/*
 char	*update_path(t_pipex *p)
 {
 	int i;
@@ -53,6 +53,10 @@ char	*update_path(t_pipex *p)
 	{
 		cmd_error = false;
 		p->cmd_paths[i] = ft_strjoin(p->cmd_paths[i], p->cmd[0]);
+		ft_putstr_fd(p->cmd_paths[i], 2);
+		ft_putstr_fd("\n", 2);
+	}
+	return (p->cmd_paths[i]);
 		if (check_access(p->cmd_paths[i]) == 0)
 			cmd_error = true;
 		else
@@ -65,3 +69,4 @@ char	*update_path(t_pipex *p)
 		free(p->cmd_paths[i]);
 	return (p->correct_path);
 }
+*/

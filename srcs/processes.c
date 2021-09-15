@@ -6,7 +6,7 @@
 /*   By: josantos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 14:04:24 by josantos          #+#    #+#             */
-/*   Updated: 2021/09/13 16:31:48 by josantos         ###   ########.fr       */
+/*   Updated: 2021/09/15 17:22:06 by josantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	child_process(int *fd, t_pipex *p)
 {
 	int in;
+	int a = -1;;
 
 	close(fd[0]);
 	dup2(fd[1], STDOUT_FILENO);
@@ -24,13 +25,17 @@ void	child_process(int *fd, t_pipex *p)
 		ft_error("Error opening infile");
 	dup2(in, 0);
 	p->cmd = ft_split(p->argv[2], ' ');
-	p->correct_path = update_path(p);
-	execve(p->correct_path, p->cmd, p->envp);
+	while (p->cmd_paths[++a])
+	{	
+		p->correct_path = ft_strjoin(p->cmd_paths[a], p->cmd[0]);
+		execve(p->correct_path, p->cmd, p->envp);
+	}
 }
 
 void	parent_process(int *fd, t_pipex *p)
 {
 	int out;
+	int a = -1;
 
 	close(fd[1]);
 	dup2(fd[0], STDIN_FILENO);
@@ -41,6 +46,15 @@ void	parent_process(int *fd, t_pipex *p)
 		ft_error("Error opening outfile");
 	dup2(out, 1);
 	p->cmd = ft_split(p->argv[3], ' ');
-	p->correct_path = update_path(p);
-	execve(p->correct_path, p->cmd, p->envp);
+	ft_putstr_fd("parent:", 2);
+	ft_putstr_fd("\n", 2);
+	while (p->cmd_paths[++a])
+	{	
+		p->correct_path = ft_strjoin(p->cmd_paths[a], p->cmd[0]);
+		ft_putstr_fd(p->correct_path, 2);
+		ft_putstr_fd("\n", 2);
+		execve(p->correct_path, p->cmd, p->envp);
+		free(p->correct_path);
+	}
+
 }
