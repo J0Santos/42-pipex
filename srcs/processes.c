@@ -6,7 +6,7 @@
 /*   By: josantos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 14:04:24 by josantos          #+#    #+#             */
-/*   Updated: 2021/09/15 17:22:06 by josantos         ###   ########.fr       */
+/*   Updated: 2021/09/15 17:38:17 by josantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	child_process(int *fd, t_pipex *p)
 		p->correct_path = ft_strjoin(p->cmd_paths[a], p->cmd[0]);
 		execve(p->correct_path, p->cmd, p->envp);
 	}
+	free(p->correct_path);
+	ft_error("1st command not found");
 }
 
 void	parent_process(int *fd, t_pipex *p)
@@ -46,15 +48,11 @@ void	parent_process(int *fd, t_pipex *p)
 		ft_error("Error opening outfile");
 	dup2(out, 1);
 	p->cmd = ft_split(p->argv[3], ' ');
-	ft_putstr_fd("parent:", 2);
-	ft_putstr_fd("\n", 2);
 	while (p->cmd_paths[++a])
 	{	
 		p->correct_path = ft_strjoin(p->cmd_paths[a], p->cmd[0]);
-		ft_putstr_fd(p->correct_path, 2);
-		ft_putstr_fd("\n", 2);
 		execve(p->correct_path, p->cmd, p->envp);
-		free(p->correct_path);
 	}
-
+	free(p->correct_path);
+	ft_error("2nd command not found");
 }
