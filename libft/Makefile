@@ -6,7 +6,7 @@
 #    By: josantos <josantos@42lisboa.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/16 16:08:51 by josantos          #+#    #+#              #
-#    Updated: 2021/06/09 15:08:03 by josantos         ###   ########.fr        #
+#    Updated: 2021/09/16 16:19:12 by josantos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libft.a
@@ -53,7 +53,8 @@ SRCS= ft_memset.c \
 	  ft_litoa_bonus.c \
 	  ft_llitoa_base_bonus.c \
 	  ft_llitoa_bonus.c \
-	  ft_atoll.c
+	  ft_atoll.c \
+	  ft_free_multi_pointer.c
 OBJS= $(SRCS:.c=.o)
 SRCS_STCK = lst_stacks/ft_dlstadd_back.c \
 			lst_stacks/ft_dlstadd_front.c \

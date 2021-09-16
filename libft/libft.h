@@ -6,7 +6,7 @@
 /*   By: josantos <josantos@42lisboa.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 17:17:37 by josantos          #+#    #+#             */
-/*   Updated: 2021/05/27 18:04:37 by josantos         ###   ########.fr       */
+/*   Updated: 2021/09/16 14:58:43 by josantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ char			*ft_litoa(long n);
 char			*ft_llitoa_base(unsigned long long n, char *base);
 char			*ft_llitoa(long long n);
 long long		ft_atoll(char *str);
+void			free_dpointer(char **str);
 
 #endif
