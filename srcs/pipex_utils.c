@@ -6,7 +6,7 @@
 /*   By: josantos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:06:33 by josantos          #+#    #+#             */
-/*   Updated: 2021/09/16 16:22:09 by josantos         ###   ########.fr       */
+/*   Updated: 2021/09/17 11:20:49 by josantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "pipex.h"
@@ -59,35 +59,3 @@ char	**get_path(char **envp)
 	free(temp);
 	return (cmd_path);
 }
-
-/*
-char	**get_path(char **envp)
-{
-	char	**cmd_path;
-	char	**path_builder;
-	int i;
-
-	i = -1;
-	path_builder = NULL;
-	cmd_path = NULL;
-	while (envp[++i])
-		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
-			path_builder = ft_split(envp[i], ':');
-	if (ft_strncmp(path_builder[0], "PATH=", 5) == 0)
-		path_builder[0] += 5;
-	i = 0;
-	while (path_builder && path_builder[i])
-		i++;
-	cmd_path = malloc((i + 1) * sizeof(char *));
-	if (!cmd_path)
-		return (NULL);
-	cmd_path[i] = 0;
-	i = -1;
-	while (path_builder[++i])
-	{
-		cmd_path[i] = ft_strjoin(path_builder[i], "/");
-		free(path_builder[i]);
-	}
-	return (cmd_path);
-}
-*/
