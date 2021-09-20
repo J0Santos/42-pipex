@@ -6,7 +6,7 @@
 /*   By: josantos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 14:04:24 by josantos          #+#    #+#             */
-/*   Updated: 2021/09/17 11:51:34 by josantos         ###   ########.fr       */
+/*   Updated: 2021/09/20 16:28:14 by josantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,7 @@ void	child_process(int *fd, t_pipex *p)
 	close(fd[1]);
 	in = open(p->argv[1], O_RDONLY);
 	if (in < 0)
-	{
-		free_val(p);
 		ft_error("Error opening infile");
-	}
 	dup2(in, 0);
 	i = -1;
 	p->cmd = ft_split(p->argv[2], ' ');
@@ -34,7 +31,6 @@ void	child_process(int *fd, t_pipex *p)
 		p->correct_path = ft_strjoin(p->cmd_paths[i], p->cmd[0]);
 		execve(p->correct_path, p->cmd, p->envp);
 	}
-	free_val(p);
 	ft_error("1st command not found");
 }
 
@@ -49,10 +45,7 @@ void	parent_process(int *fd, t_pipex *p)
 	out = open(p->argv[4], O_RDWR | O_CREAT | O_TRUNC, S_IRUSR
 			| S_IWUSR | S_IRGRP | S_IROTH);
 	if (out < 0)
-	{
-		free_val(p);
 		ft_error("Error opening outfile");
-	}
 	dup2(out, 1);
 	p->cmd = ft_split(p->argv[3], ' ');
 	i = -1;
@@ -61,6 +54,5 @@ void	parent_process(int *fd, t_pipex *p)
 		p->correct_path = ft_strjoin(p->cmd_paths[i], p->cmd[0]);
 		execve(p->correct_path, p->cmd, p->envp);
 	}
-	free_val(p);
 	ft_error("2nd command not found");
 }

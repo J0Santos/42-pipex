@@ -6,7 +6,7 @@
 /*   By: josantos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 12:45:18 by josantos          #+#    #+#             */
-/*   Updated: 2021/09/17 11:30:31 by josantos         ###   ########.fr       */
+/*   Updated: 2021/09/20 16:23:17 by josantos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ int	main(int argc, char **argv, char **envp)
 		ft_error("Error: Execution must be: ./pipex file1 cmd1 cmd2 file2");
 	init_val(&p, argv, envp);
 	pipex(&p);
-	free_val(&p);
+/*	free_val(&p);*/
 }
