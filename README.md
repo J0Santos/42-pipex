@@ -6,7 +6,7 @@
 
 ## Introduction
 
-#### -----> [PDF](https://github.com/J0Santos/42-pipex/blob/420652bea1896eda9a57b4484af2c2f0c2073cb5/Readme_utils/Pipex.pdf)
+#### -----> [PDF](https://github.com/J0Santos/42-pipex/blob/420652bea1896eda9a57b4484af2c2f0c2073cb5/Readme_utils/Pipex.pdf) <-----
 
 The project was made to recreate what a pipe does.
 
