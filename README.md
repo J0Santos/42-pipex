@@ -22,7 +22,7 @@ An example of this could be: './pipex chicken_recipe.txt "cat -e" "wc -l"
 
 ### Functions
 
-- pipe() : [https://www.geeksforgeeks.org/pipe-system-call]
+- pipe() : ![GeeksforGeeks](https://www.geeksforgeeks.org/pipe-system-call)
 - fork() :
 - dup2() :
 - execve() :
