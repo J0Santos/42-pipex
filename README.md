@@ -34,9 +34,10 @@ I also used these guides to help me with some questions I had during the project
 ## Observations
 
 The 'execve()' function works in the following way:
-'''C
+
+```C
 int execve(const char *pathname, char *const argv[], char *const envp[])
-'''
+```
 
 
 
