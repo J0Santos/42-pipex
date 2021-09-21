@@ -2,7 +2,7 @@
 
 ## Grade 🧑‍🎓
 
-[!Grade]()
+[!Grade](https://github.com/J0Santos/42-pipex/blob/c00f67eecb54837db3b8c78196eef72b6a13e964/Readme_utils/Grade.png)
 
 ## Introduction
 
