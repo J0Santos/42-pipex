@@ -6,8 +6,6 @@
 
 ## Introduction
 
-This project is the discovery in detail and by programming of a UNIX mechanism that you already know.
-
 #### -----> [PDF]()
 
 The project requires you to recreate what a pipe does.
@@ -21,3 +19,5 @@ It should work by using the following comamnd line:
   - 'outfile' is the file where the result of 'cmd 2' will be stored;
 
 An example of this could be: './pipex chicken_recipe.txt "cat -e" "wc -l"
+
+
