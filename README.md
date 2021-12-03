@@ -24,12 +24,12 @@ An example of this could be: `./pipex chicken_recipe.txt "cat -e" "wc -l" recipe
 
 This project is quite straight forward. There are a few ways to do it, but they all revolve around the same idea.
 
-There are a few videos from ![CodeVault](https://www.youtube.com/playlist?list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY) on youtube that explain in a lot of detail how to get this done`
+There are a few videos from [CodeVault](https://www.youtube.com/playlist?list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY) on youtube that explain in a lot of detail how to get this done`
 
 I also used these guides to help me with some questions I had during the project:
 
-- ![Pipex Tutorial](https://csnotes.medium.com/pipex-tutorial-42-project-4469f5dd5901)
-- ![Korean Guide for Pipex](https://bigpel66.oopy.io/library/42/inner-circle/8) (If you dont know Korean, use a translator. If you do know, lucky you)
+- [Pipex Tutorial](https://csnotes.medium.com/pipex-tutorial-42-project-4469f5dd5901)
+- [Korean Guide for Pipex](https://bigpel66.oopy.io/library/42/inner-circle/8) (If you dont know Korean, use a translator. If you do know, lucky you)
 
 ## Observations
 
